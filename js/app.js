@@ -23,6 +23,7 @@ var appointmentsStorage = {
     }  
     appointments.forEach(function (appointment, index) {
       appointment.id = index;
+      appointment.apptDate = new Date(appointment.apptDate).toDateString();       
     });
     appointmentsStorage.uid = appointments.length
     return appointments
@@ -114,6 +115,7 @@ const app = new Vue({
         this.showAlert = false;
         this.validationMsg = '';
         var enteredDate = new Date(value.apptDate);
+        this.newAppointment.apptDate =  new Date(this.newAppointment.apptDate).toDateString();  
         if (enteredDate < this.currentDate) {
         this.validationMsg = "Please enter a date greater than today's";
         this.showAlert = true;
